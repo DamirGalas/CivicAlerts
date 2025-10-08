@@ -4,12 +4,12 @@ using Microsoft.Extensions.Logging;
 using NATS.Client.Core;
 using System.Text.Json;
 
-public class Worker : BackgroundService
+public class IncidentReportedWorker : BackgroundService
 {
-    private readonly ILogger<Worker> _logger;
+    private readonly ILogger<IncidentReportedWorker> _logger;
     private readonly NatsConnection _nats;
 
-    public Worker(ILogger<Worker> logger)
+    public IncidentReportedWorker(ILogger<IncidentReportedWorker> logger)
     {
         _logger = logger;
         _nats = new NatsConnection();

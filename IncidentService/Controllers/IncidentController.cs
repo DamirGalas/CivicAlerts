@@ -1,5 +1,6 @@
 using Common.Dtos;
 using IncidentService.Application.Commands.ReportIncident;
+using IncidentService.Application.Commands.IncidentStatusChanged;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IncidentService.Controllers
@@ -10,11 +11,19 @@ namespace IncidentService.Controllers
     {
         private readonly ILogger<IncidentController> _logger;
         private readonly ReportIncidentHandler _reportIncidentHandler;
+        private readonly IncidentStatusChangedHandler _incidentStatusChangedHandler;
 
-        public IncidentController(ILogger<IncidentController> logger, ReportIncidentHandler reportIncidentHandler)
+        // In-memory storage for demo purposes
+        private static readonly List<IncidentDto> _incidents = new();
+
+        public IncidentController(
+            ILogger<IncidentController> logger,
+            ReportIncidentHandler reportIncidentHandler,
+            IncidentStatusChangedHandler incidentStatusChangedHandler)
         {
             _logger = logger;
             _reportIncidentHandler = reportIncidentHandler;
+            _incidentStatusChangedHandler = incidentStatusChangedHandler;
         }
 
         [HttpPost]
@@ -28,17 +37,28 @@ namespace IncidentService.Controllers
             var command = new ReportIncidentCommand(incident.Title, incident.Description);
             await _reportIncidentHandler.HandleAsync(command);
 
+            _incidents.Add(incident);//demo purpose
             return Created(string.Empty, incident);
         }
 
+        [HttpGet]
+        public IActionResult GetIncidents()
+        {
+            return Ok(_incidents);
+        }
+
         [HttpPost("status")]
-        public IActionResult IncidentStatusChanged([FromBody] IncidentStatusChangeDto statusChange)
+        public async Task<IActionResult> IncidentStatusChanged([FromBody] IncidentStatusChangeDto statusChange)
         {
             if (string.IsNullOrWhiteSpace(statusChange.IncidentId) || string.IsNullOrWhiteSpace(statusChange.NewStatus))
             {
                 return BadRequest("IncidentId and NewStatus are required.");
             }
             _logger.LogInformation($"Incident status changed: {statusChange.IncidentId} -> {statusChange.NewStatus}");
+
+            var command = new IncidentStatusChangedCommand(statusChange.IncidentId, statusChange.NewStatus);
+            await _incidentStatusChangedHandler.HandleAsync(command);
+
             return Ok(statusChange);
         }
     }

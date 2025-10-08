@@ -1,5 +1,6 @@
 using Common.EventBus;
 using IncidentService.Application.Commands.ReportIncident;
+using IncidentService.Application.Commands.IncidentStatusChanged;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IEventBus, NatsEventBus>();
 builder.Services.AddTransient<ReportIncidentHandler>();
+builder.Services.AddTransient<IncidentStatusChangedHandler>();
 
 var app = builder.Build();
 
