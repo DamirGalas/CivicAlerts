@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{4E4D822B-674A-407E-A139-70754013F5EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivicAlerts.Data", "CivicAlerts.Data\CivicAlerts.Data.csproj", "{D9F5AD1D-A4C2-45F8-AD98-1BFFE3C26608}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4E4D822B-674A-407E-A139-70754013F5EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E4D822B-674A-407E-A139-70754013F5EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E4D822B-674A-407E-A139-70754013F5EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9F5AD1D-A4C2-45F8-AD98-1BFFE3C26608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9F5AD1D-A4C2-45F8-AD98-1BFFE3C26608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9F5AD1D-A4C2-45F8-AD98-1BFFE3C26608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9F5AD1D-A4C2-45F8-AD98-1BFFE3C26608}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

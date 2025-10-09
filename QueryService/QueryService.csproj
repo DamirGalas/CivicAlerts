@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CivicAlerts.Data\CivicAlerts.Data.csproj" />
     <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 

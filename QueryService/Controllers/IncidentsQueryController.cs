@@ -34,7 +34,7 @@ namespace QueryService.Controllers
 
         // GET /api/incidents/{id}
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetIncidentById(Guid id)
+        public async Task<IActionResult> GetIncidentById(string id)
         {
             var query = new GetIncidentByIdQuery(id);
             var incident = await _getIncidentByIdHandler.HandleAsync(query);

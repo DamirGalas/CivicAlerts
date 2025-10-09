@@ -1,13 +1,18 @@
 using QueryService.Application.Handlers;
+using CivicAlerts.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Read ConnectionStrings from appsettings.json
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// For more information about configuring Swagger/OpenAPI, visit https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDataAccess(connectionString);
 
 builder.Services.AddScoped<GetIncidentsHandler>();
 builder.Services.AddScoped<GetIncidentByIdHandler>();

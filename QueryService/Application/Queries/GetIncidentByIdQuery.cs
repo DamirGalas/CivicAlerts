@@ -4,9 +4,9 @@ namespace QueryService.Queries
 {
     public class GetIncidentByIdQuery
     {
-        public Guid IncidentId { get; }
+        public string IncidentId { get; }
 
-        public GetIncidentByIdQuery(Guid incidentId)
+        public GetIncidentByIdQuery(string incidentId)
         {
             IncidentId = incidentId;
         }

@@ -2,6 +2,7 @@ namespace Common.Dtos
 {
     public class IncidentDto
     {
+        public string Id { get; set; } // unique identifier
         public string Title { get; set; } // required
         public string? Description { get; set; } // optional
         public string Category { get; set; } // e.g., Lighting, Road Damage, Pollution
