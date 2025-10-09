@@ -1,10 +1,11 @@
 using Common.EventBus;
 using Common.Events;
+using IncidentService.Application.Commands;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
-namespace IncidentService.Application.Commands.IncidentStatusChanged
+namespace IncidentService.Application.Handlers
 {
     public class IncidentStatusChangedHandler
     {
@@ -25,7 +26,7 @@ namespace IncidentService.Application.Commands.IncidentStatusChanged
                 NewStatus = command.NewStatus,
                 ChangedAt = DateTime.UtcNow
             };
-            await _eventBus.PublishJetStreamAsync<IncidentStatusChangedEvent>("incident.status.changed", statusEvent);
+            await _eventBus.PublishJetStreamAsync("incident.status.changed", statusEvent);
             _logger.LogInformation($"Incident status changed: {statusEvent.IncidentId} -> {statusEvent.NewStatus}");
         }
     }

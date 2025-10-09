@@ -1,4 +1,4 @@
-namespace IncidentService.Application.Commands.ReportIncident
+namespace IncidentService.Application.Commands
 {
     public class ReportIncidentCommand
     {

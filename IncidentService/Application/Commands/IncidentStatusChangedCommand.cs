@@ -1,4 +1,4 @@
-namespace IncidentService.Application.Commands.IncidentStatusChanged
+namespace IncidentService.Application.Commands
 {
     public class IncidentStatusChangedCommand
     {

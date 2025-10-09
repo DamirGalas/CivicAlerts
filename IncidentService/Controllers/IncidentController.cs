@@ -1,7 +1,7 @@
 using Common.Dtos;
-using IncidentService.Application.Commands.ReportIncident;
-using IncidentService.Application.Commands.IncidentStatusChanged;
 using Microsoft.AspNetCore.Mvc;
+using IncidentService.Application.Handlers;
+using IncidentService.Application.Commands;
 
 namespace IncidentService.Controllers
 {

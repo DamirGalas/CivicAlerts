@@ -1,6 +1,5 @@
 using Common.EventBus;
-using IncidentService.Application.Commands.ReportIncident;
-using IncidentService.Application.Commands.IncidentStatusChanged;
+using IncidentService.Application.Handlers;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -4,8 +4,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 using Common.EventBus;
+using IncidentService.Application.Commands;
 
-namespace IncidentService.Application.Commands.ReportIncident
+namespace IncidentService.Application.Handlers
 {
     public class ReportIncidentHandler
     {
@@ -27,7 +28,7 @@ namespace IncidentService.Application.Commands.ReportIncident
                 Title = command.Title,
                 Description = command.Description
             };
-                await _eventBus.PublishJetStreamAsync<IncidentReportedEvent>("incident.reported", incidentEvent);
+                await _eventBus.PublishJetStreamAsync("incident.reported", incidentEvent);
             _logger.LogInformation($"Incident reported: {incidentEvent.Id} - {incidentEvent.Title}");
         }
     }
