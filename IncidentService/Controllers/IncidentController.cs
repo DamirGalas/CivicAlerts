@@ -13,9 +13,6 @@ namespace IncidentService.Controllers
         private readonly ReportIncidentHandler _reportIncidentHandler;
         private readonly IncidentStatusChangedHandler _incidentStatusChangedHandler;
 
-        // In-memory storage for demo purposes
-        private static readonly List<IncidentDto> _incidents = new();
-
         public IncidentController(
             ILogger<IncidentController> logger,
             ReportIncidentHandler reportIncidentHandler,
@@ -37,14 +34,7 @@ namespace IncidentService.Controllers
             var command = new ReportIncidentCommand(incident.Title, incident.Description);
             await _reportIncidentHandler.HandleAsync(command);
 
-            _incidents.Add(incident);//demo purpose
             return Created(string.Empty, incident);
-        }
-
-        [HttpGet]
-        public IActionResult GetIncidents()
-        {
-            return Ok(_incidents);
         }
 
         [HttpPost("status")]
