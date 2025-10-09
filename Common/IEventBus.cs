@@ -4,5 +4,6 @@
     {
         void Publish<T>(string subject, T message);
         Task PublishAsync<T>(string subject, T message);
+        Task PublishJetStreamAsync<T>(string subject, T message);
     }
 }

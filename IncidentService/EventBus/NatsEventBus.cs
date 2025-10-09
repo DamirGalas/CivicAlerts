@@ -25,4 +25,15 @@ public class NatsEventBus : IEventBus
         var data = System.Text.Encoding.UTF8.GetBytes(json);
         await Task.Run(() => _connection.Publish(subject, data));
     }
+
+    public async Task PublishJetStreamAsync<T>(string subject, T message)
+    {
+        var json = JsonSerializer.Serialize(message);
+        var data = System.Text.Encoding.UTF8.GetBytes(json);
+        var jetStream = _connection.CreateJetStreamContext();
+        await Task.Run(() =>
+        {
+            jetStream.Publish(subject, data);
+        });
+    }
 }

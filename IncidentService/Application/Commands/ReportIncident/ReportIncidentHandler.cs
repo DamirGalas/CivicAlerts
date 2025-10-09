@@ -27,7 +27,7 @@ namespace IncidentService.Application.Commands.ReportIncident
                 Title = command.Title,
                 Description = command.Description
             };
-            await _eventBus.PublishAsync<IncidentReportedEvent>("incident.reported", incidentEvent);
+                await _eventBus.PublishJetStreamAsync<IncidentReportedEvent>("incident.reported", incidentEvent);
             _logger.LogInformation($"Incident reported: {incidentEvent.Id} - {incidentEvent.Title}");
         }
     }
